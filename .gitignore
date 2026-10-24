@@ -1,0 +1,20 @@
+# Build output and the exported Pulse source used by the acceptance tests
+/bin/
+/.pulse-src/
+/dist/
+
+# Terraform working files
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+*.tfplan
+tfplan
+crash.log
+.terraformrc
+terraform.rc
+
+# Editors / OS
+.idea/
+.vscode/
+.DS_Store

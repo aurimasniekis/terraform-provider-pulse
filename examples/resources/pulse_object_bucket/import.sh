@@ -1,0 +1,1 @@
+terraform import pulse_object_bucket.snapshots camera-snapshots

@@ -1,0 +1,1 @@
+terraform import pulse_alert_rule.doors_quiet custom_abcdefghijklmnop
