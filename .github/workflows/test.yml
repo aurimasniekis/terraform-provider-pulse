@@ -11,7 +11,7 @@ permissions:
 env:
   # Pulse revision the acceptance tests run against.
   PULSE_REPOSITORY: aurimasniekis/go-pulse
-  PULSE_COMMIT: 3b2712f065ea6693438d00457dd6b17a22687d45
+  PULSE_COMMIT: e58571ed18f21831d8b21f279e61e1267ced98ca
   TERRAFORM_VERSION: 1.11.4
 
 jobs:

@@ -18,7 +18,8 @@ Authenticate with a **personal access token** (`pulse_pat_…`) with the `admini
 terraform {
   required_providers {
     pulse = {
-      source = "aurimasniekis/pulse"
+      source  = "aurimasniekis/pulse"
+      version = "~> 0.1"
     }
   }
 }

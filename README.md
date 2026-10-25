@@ -4,8 +4,10 @@ Manage a [Pulse](https://aurimasniekis.github.io/go-pulse/) server (a personal d
 code: clients and their grants, HTTP tokens, streams, consumers, KV and object buckets, webhooks in and out, alert rules,
 firewall allowlist entries and bans, dashboard users, OpenID Connect single sign-on and sign-in settings.
 
-Built with [terraform-plugin-framework](https://github.com/hashicorp/terraform-plugin-framework) (protocol 6). Tested
-against Pulse's admin API with Terraform 1.11.
+Built with [terraform-plugin-framework](https://github.com/hashicorp/terraform-plugin-framework) (protocol 6). 0.1.0 is
+tested against [Pulse 0.1.0](https://github.com/aurimasniekis/go-pulse/releases/tag/v0.1.0) with Terraform 1.11.
+Releases are published to the [Terraform Registry](https://registry.terraform.io/providers/aurimasniekis/pulse) with
+GPG-signed checksums; see [CHANGELOG.md](CHANGELOG.md).
 
 ## Usage
 
@@ -13,7 +15,8 @@ against Pulse's admin API with Terraform 1.11.
 terraform {
   required_providers {
     pulse = {
-      source = "aurimasniekis/pulse"
+      source  = "aurimasniekis/pulse"
+      version = "~> 0.1"
     }
   }
 }
@@ -141,6 +144,15 @@ provider_installation {
 
 With `dev_overrides`, skip `terraform init` (or add a `filesystem_mirror` for the provider, as
 [`scripts/verify-homelab.sh`](scripts/verify-homelab.sh) does).
+
+### Releasing
+
+Add the version's section to [CHANGELOG.md](CHANGELOG.md), point `PULSE_COMMIT` (Makefile and
+`.github/workflows/test.yml`) at the Pulse release it was tested against, then push a `vX.Y.Z` tag. The
+[release workflow](.github/workflows/release.yml) runs the unit tests and [GoReleaser](.goreleaser.yml), signs the
+checksums with the release GPG key (secrets `GPG_PRIVATE_KEY` and `PASSPHRASE`) and creates a draft GitHub release;
+publishing it makes the version available in the Terraform Registry. The Registry needs the key's public half
+(Terraform Registry → User Settings → Signing Keys) and the provider added there once (Publish → Provider).
 
 ## License
 

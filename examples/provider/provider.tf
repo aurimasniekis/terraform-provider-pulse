@@ -1,7 +1,8 @@
 terraform {
   required_providers {
     pulse = {
-      source = "aurimasniekis/pulse"
+      source  = "aurimasniekis/pulse"
+      version = "~> 0.1"
     }
   }
 }

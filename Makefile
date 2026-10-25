@@ -8,7 +8,7 @@ GOLANGCI_LINT ?= golangci-lint
 
 # Pulse source the acceptance tests run against (exported read-only from a local checkout).
 PULSE_REPO    ?= ../pulse
-PULSE_COMMIT  ?= 3b2712f
+PULSE_COMMIT  ?= e58571e
 
 .DEFAULT_GOAL := help
 .PHONY: help build install test testacc lint fmt vet docs docs-check pulse-src pulse-bin homelab clean
