@@ -93,7 +93,7 @@ output "google_redirect_uri" {
 - `client_secret` (String, Sensitive) OAuth client secret (at most 1024 bytes). Pulse stores it encrypted and never returns it, so it is sent only when created or when its value here changes; removing it from the configuration removes it from Pulse. Leave it out for public clients. A secret changed outside Terraform is not detected unless it was removed.
 - `enabled` (Boolean) Whether the provider is offered on the sign-in page. Run a test login first. Default `false`.
 - `end_session_enabled` (Boolean) Also sign the person out at the provider when they sign out of Pulse (when the provider supports it). Default `false`.
-- `groups_claim` (String) Name of the ID token claim that lists the person's groups (for example `groups`), used by `pulse_sso_mapping` and the `jit.groups` rule. Default empty (no groups).
+- `groups_claim` (String) Name of the ID token claim that lists the person's groups (for example `groups`), used by `pulse_sso_mapping` and the `jit.groups` rule. Pulse 0.1.1 and later also read a nested claim by dotted path, such as `porch.groups` for Porch. Default empty (no groups).
 - `jit` (Attributes) Rules a new person must match to be created at their first sign-in when `provisioning = "jit"`. Every rule that is set must match. (see [below for nested schema](#nestedatt--jit))
 - `provisioning` (String) `preprovisioned` (default): only users with a linked identity can sign in. `jit`: Pulse also creates a user at their first sign-in when every rule in `jit` matches (at least one rule is required).
 - `scopes` (List of String) Scopes requested at sign-in; must include `openid`. Default `["openid", "profile", "email"]`. Add the scope your provider needs for a groups claim, if any.

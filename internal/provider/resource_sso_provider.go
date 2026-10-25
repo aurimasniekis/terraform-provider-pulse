@@ -144,7 +144,8 @@ func (r *ssoProviderResource) Schema(_ context.Context, _ resource.SchemaRequest
 				Validators: []validator.List{listvalidator.SizeAtLeast(1), listvalidator.ValueStringsAre(
 					stringvalidator.LengthBetween(1, 64), stringvalidator.RegexMatches(ssoTokenRE, "must not contain whitespace or quotes"))}},
 			"groups_claim": schema.StringAttribute{MarkdownDescription: "Name of the ID token claim that lists the person's groups " +
-				"(for example `groups`), used by `pulse_sso_mapping` and the `jit.groups` rule. Default empty (no groups).",
+				"(for example `groups`), used by `pulse_sso_mapping` and the `jit.groups` rule. Pulse 0.1.1 and later also read a " +
+				"nested claim by dotted path, such as `porch.groups` for Porch. Default empty (no groups).",
 				Optional: true, Computed: true, Default: stringdefault.StaticString(""),
 				Validators: []validator.String{stringvalidator.LengthAtMost(64), ssoTrimmedValidator{}}},
 			"provisioning": schema.StringAttribute{MarkdownDescription: "`preprovisioned` (default): only users with a linked " +
