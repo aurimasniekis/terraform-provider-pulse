@@ -42,12 +42,21 @@ server:
 docker compose exec pulsed pulsed admin token --email terraform@example.com --create --role administrator --days 30
 ```
 
-Pulse accepts personal access tokens **only on its loopback admin listener**, so run Terraform on the server or through
-an SSH tunnel:
+Pulse accepts personal access tokens on its **loopback admin listener**, so run Terraform on the server or through an
+SSH tunnel:
 
 ```sh
 ssh -N -L 8080:127.0.0.1:8080 you@vps.example.com &
 terraform apply
+```
+
+From CI (Pulse 0.1.3 and later), the provider can use the public dashboard host instead: set
+`PULSE_ADMIN_PUBLIC_TOKENS=true` on the server, mint a token that works only from the runner's egress address, and set
+`admin_url` to `https://<dashboard host>`:
+
+```sh
+docker compose exec pulsed pulsed admin token --email terraform@example.com --create --name terraform \
+  --role operator --days 366 --cidr 203.0.113.7
 ```
 
 See [`examples/`](examples) for one example per resource and [`examples/homelab`](examples/homelab/main.tf) for a

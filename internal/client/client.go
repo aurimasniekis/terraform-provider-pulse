@@ -1,8 +1,8 @@
 // Package client is a small, typed client for the Pulse admin API (/api/admin/v1).
 //
-// It authenticates with a personal access token (`pulse_pat_…`) sent as a bearer token. Pulse accepts those only on
-// its loopback admin listener, so the endpoint is normally http://127.0.0.1:8080 on the server or through an SSH
-// tunnel. Reads and deletes are retried with exponential backoff; creates and updates are not idempotent in Pulse and
+// It authenticates with a personal access token (`pulse_pat_…`) sent as a bearer token. Pulse accepts those on its
+// loopback admin listener, so the endpoint is normally http://127.0.0.1:8080 on the server or through an SSH tunnel;
+// a token created with source networks also works on the public dashboard host when the server allows it. Reads and deletes are retried with exponential backoff; creates and updates are not idempotent in Pulse and
 // are retried only when the server refused them before doing anything (429). Errors are decoded from RFC 9457
 // problem documents.
 //

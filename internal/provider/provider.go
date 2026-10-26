@@ -54,8 +54,11 @@ func (p *pulseProvider) Schema(_ context.Context, _ provider.SchemaRequest, resp
 			"JetStream) through its admin API: clients and their grants, HTTP tokens, streams, consumers, KV and object buckets, " +
 			"webhooks, alert rules, firewall entries, dashboard users and single sign-on.\n\n" +
 			"Authenticate with a **personal access token** (`pulse_pat_…`) with the `administrator` role: create one on the " +
-			"dashboard's Account page, or on the server with `pulsed admin token`. Pulse accepts these tokens only on its loopback " +
-			"admin listener, so run Terraform on the server or through an SSH tunnel (`ssh -L 8080:127.0.0.1:8080 <server>`).",
+			"dashboard's Account page, or on the server with `pulsed admin token`. Pulse accepts these tokens on its loopback " +
+			"admin listener, so run Terraform on the server or through an SSH tunnel (`ssh -L 8080:127.0.0.1:8080 <server>`). " +
+			"From CI, Pulse 0.1.3 and later can also accept a token on the public dashboard host (`https://…`) when the server " +
+			"sets `PULSE_ADMIN_PUBLIC_TOKENS=true` and the token was created with the runner's networks " +
+			"(`pulsed admin token … --cidr <address>`).",
 		Attributes: map[string]schema.Attribute{
 			"admin_url": schema.StringAttribute{
 				MarkdownDescription: "Admin URL of the Pulse server. Default `" + DefaultAdminURL + "`. May also be set with the `" +

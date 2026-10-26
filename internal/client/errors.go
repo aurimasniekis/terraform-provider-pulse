@@ -51,8 +51,9 @@ func (e *APIError) Error() string {
 	}
 	switch e.Code {
 	case "unauthorized":
-		b.WriteString(". Personal access tokens work only on the loopback admin listener (e.g. http://127.0.0.1:8080, " +
-			"through an SSH tunnel), and must not be revoked or expired")
+		b.WriteString(". Personal access tokens work on the loopback admin listener (e.g. http://127.0.0.1:8080, " +
+			"through an SSH tunnel); on the public dashboard host only when the server allows it and from the token's own " +
+			"networks. They must not be revoked or expired")
 	case "forbidden":
 		b.WriteString(". The token's role does not allow this; most resources need an administrator token")
 	}

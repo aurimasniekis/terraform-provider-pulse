@@ -77,7 +77,7 @@ func TestRequestHeadersAndProblem(t *testing.T) {
 	}
 }
 
-func TestUnauthorizedExplainsLoopback(t *testing.T) {
+func TestUnauthorizedExplainsListeners(t *testing.T) {
 	c, _ := newTestClient(t, func(w http.ResponseWriter, _ *http.Request) {
 		w.WriteHeader(http.StatusUnauthorized)
 		_, _ = w.Write([]byte(`{"status":401,"code":"unauthorized","detail":"sign in"}`))
