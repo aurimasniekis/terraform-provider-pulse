@@ -5,6 +5,14 @@ All notable changes to this provider are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-10-26
+
+### Changed
+- Docs and the 401 error now explain that Pulse 0.1.3 and later can accept a personal access token on the public
+  dashboard host, from the networks the token was created with, when the server sets `PULSE_ADMIN_PUBLIC_TOKENS=true`.
+  Point `admin_url` at `https://<dashboard host>` to run Terraform from CI without an SSH tunnel. The `groups_claim`
+  description notes that it accepts a dotted path such as `porch.groups` (Pulse 0.1.1 and later).
+
 ## [0.1.0] - 2026-10-25
 
 First release, for [Pulse 0.1.0](https://github.com/aurimasniekis/go-pulse/releases/tag/v0.1.0).
@@ -18,5 +26,6 @@ First release, for [Pulse 0.1.0](https://github.com/aurimasniekis/go-pulse/relea
   state as sensitive values; destroying a client or HTTP token revokes it and removes its record.
 - Authenticates with a Pulse personal access token with the `administrator` role on the loopback admin listener.
 
-[Unreleased]: https://github.com/aurimasniekis/terraform-provider-pulse/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/aurimasniekis/terraform-provider-pulse/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/aurimasniekis/terraform-provider-pulse/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/aurimasniekis/terraform-provider-pulse/releases/tag/v0.1.0
