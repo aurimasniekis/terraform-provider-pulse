@@ -5,6 +5,18 @@ All notable changes to this provider are documented here. The format follows
 
 ## [Unreleased]
 
+### Security
+- Go 1.27.4 (from 1.27.3) fixes GO-2026-6859 (CVE-2026-97054) in `net/http`.
+- `golang.org/x/net` v0.62.0 (from v0.52.0) fixes GO-2026-6617 (CVE-2026-97032), GO-2026-6612 (CVE-2026-78663),
+  GO-2026-6611 (CVE-2026-78669), GO-2026-6603 (CVE-2026-78659), GO-2026-5026 (CVE-2026-39821) and CVE-2026-78661
+  (GO-2026-6860).
+- `golang.org/x/text` v0.43.0 (from v0.36.0) fixes GO-2026-5970 (CVE-2026-56852).
+- `google.golang.org/grpc` v1.83.2 (from v1.79.3) fixes GO-2026-6443 (CVE-2026-84445), GO-2026-6348 (CVE-2026-84304)
+  and GO-2026-6061 (GHSA-hrxh-6v49-42gf).
+
+### Changed
+- The module now requires Go 1.27.4 (`go` directive in `go.mod`), which CI and release builds use.
+
 ## [0.1.1] - 2026-10-26
 
 ### Changed
